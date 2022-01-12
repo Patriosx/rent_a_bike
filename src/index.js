@@ -2,15 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-// import ScheduleProvider from "./hook/schedule-context";
-
+import ScheduleState from "./context/ScheduleState";
 ReactDOM.render(
-  // <ScheduleProvider>
-  <React.StrictMode>
+  <ScheduleState>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>,
-  // </ScheduleProvider>,
+  </ScheduleState>,
   document.getElementById("root")
 );

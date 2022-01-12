@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Container,
   InputGroup,
@@ -6,13 +6,16 @@ import {
   Form,
   Card,
 } from "react-bootstrap";
+import ScheduleContext from "../context/ScheduleContext";
 
-const Login = ({ setUser }) => {
+const Login = () => {
   const [inputUser, setInputUser] = useState("");
 
+  const { getCurrentUser } = useContext(ScheduleContext);
   const onLogin = (e) => {
     e.preventDefault();
-    setUser(inputUser.toLocaleLowerCase());
+    // setUser(inputUser.toLocaleLowerCase());
+    getCurrentUser(inputUser);
   };
 
   const inputHandler = (e) => {

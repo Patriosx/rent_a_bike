@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Table, Container } from "react-bootstrap";
 import Schedule from "./Schedule";
-import useData from "../hook/useData";
 import { capitalized } from "../utils/utils";
+import ScheduleContext from "../context/ScheduleContext";
 
-const ScheduleList = ({ schedules, bookingBike, user }) => {
+const ScheduleList = ({ user }) => {
+  //Acceso al estado del contexto
+  const { schedules } = useContext(ScheduleContext);
+
   return (
     <Container className="m-2">
       <div className="p-2">
@@ -25,7 +28,6 @@ const ScheduleList = ({ schedules, bookingBike, user }) => {
                 key={schedule.time}
                 schedule={schedule}
                 index={i}
-                bookingBike={bookingBike}
                 user={user}
               />
             );

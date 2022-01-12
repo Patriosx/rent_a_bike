@@ -3,95 +3,16 @@ import "bootswatch/dist/sandstone/bootstrap.min.css";
 import ScheduleList from "./components/ScheduleList";
 import { Container } from "react-bootstrap";
 
-import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import Login from "./components/Login";
-
+import ScheduleContext from "./context/ScheduleContext";
 // const user = "Patricio";
 // let user = prompt("Please enter your name");
 
 function App() {
-  const [schedules, setSchedules] = useState([
-    {
-      time: "8:30",
-      available: 1,
-      customers: [],
-    },
-    {
-      time: "9:30",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "10:00",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "10:30",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "11:00",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "11:30",
-
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "12:00",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "12:30",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "13:00",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "13:30",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "14:00",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "14:30",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "15:00",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "15:30",
-      available: 8,
-      customers: [],
-    },
-    {
-      time: "16:00",
-      available: 0,
-      customers: [],
-    },
-  ]);
-  const [user, setUser] = useState("");
-  console.log("user", user);
-  console.log(schedules);
+  const { user, schedules, getCustomerList } = useContext(ScheduleContext);
+  getCustomerList();
+  /** 
   const bookingBike = (selectedSchedule) => {
     //busco la hora
     const isCurrentUser = selectedSchedule.customers.includes(user);
@@ -114,18 +35,9 @@ function App() {
       setSchedules([...clone]);
     }
   };
+  /** */
   return (
-    <Container>
-      {user ? (
-        <ScheduleList
-          schedules={schedules}
-          bookingBike={bookingBike}
-          user={user}
-        />
-      ) : (
-        <Login setUser={setUser} />
-      )}
-    </Container>
+    <Container>{user ? <ScheduleList user={user} /> : <Login />}</Container>
   );
 }
 
