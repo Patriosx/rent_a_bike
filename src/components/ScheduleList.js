@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Table, Container } from "react-bootstrap";
 import Schedule from "./Schedule";
 import { capitalized } from "../utils/utils";
 import ScheduleContext from "../context/ScheduleContext";
 
-const ScheduleList = ({ user }) => {
+const ScheduleList = () => {
   //Acceso al estado del contexto
-  const { schedules } = useContext(ScheduleContext);
+  const { schedules, getSchedules, user } = useContext(ScheduleContext);
+
+  useEffect(() => {
+    getSchedules();
+  }, []);
 
   return (
     <Container className="m-2">
@@ -22,7 +26,7 @@ const ScheduleList = ({ user }) => {
           </tr>
         </thead>
         <tbody>
-          {schedules.map((schedule, i) => {
+          {schedules?.map((schedule, i) => {
             return (
               <Schedule
                 key={schedule.time}

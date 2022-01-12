@@ -14,8 +14,7 @@ const Login = () => {
   const { getCurrentUser } = useContext(ScheduleContext);
   const onLogin = (e) => {
     e.preventDefault();
-    // setUser(inputUser.toLocaleLowerCase());
-    getCurrentUser(inputUser);
+    getCurrentUser(inputUser.toLocaleLowerCase());
   };
 
   const inputHandler = (e) => {
@@ -27,8 +26,7 @@ const Login = () => {
       style={{ minHeight: "100vh" }}
     >
       <Card className="text-center p-5">
-        <h1 className="m-4">Renting a bike</h1>
-
+        <h1 className="m-4">Motorcycles for rent</h1>
         <Container>
           <Form onSubmit={onLogin}>
             <InputGroup>
@@ -38,7 +36,6 @@ const Login = () => {
                 id=""
                 placeholder="enter your username..."
                 onChange={inputHandler}
-                //   value={inputUser}
               />
               <button type="submit" className="btn btn-success">
                 Login

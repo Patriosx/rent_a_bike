@@ -9,7 +9,7 @@ export default (state, action) => {
         ...state,
         user: payload,
       };
-    case "SCHEDULES":
+    case "GET_SCHEDULES":
       return {
         ...state,
         schedules: payload,
