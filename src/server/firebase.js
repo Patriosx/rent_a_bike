@@ -23,7 +23,6 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_MSGIDSENDER,
   appId: process.env.REACT_APP_APPIDI,
 };
-console.log(firebaseConfig);
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
