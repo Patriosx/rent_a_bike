@@ -65,7 +65,6 @@ export async function bookingBikeFirebase(schedule, user) {
     } else {
       //Elimina
       const tmp = schedule.customers.filter((customer) => customer !== user);
-      console.log(tmp);
       await updateDoc(docRef, {
         available: schedule.available + 1,
         customers: tmp,
