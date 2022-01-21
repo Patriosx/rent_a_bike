@@ -21,7 +21,6 @@ const ScheduleState = (props) => {
   const getCustomerList = () => {
     const customers = state.schedules.flatMap((schedule) => schedule.customers);
     const uniq = [...new Set(customers)];
-    // console.log(uniq);
   };
   const getCurrentUser = (user) => {
     dispatch({

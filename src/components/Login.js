@@ -33,7 +33,6 @@ const Login = () => {
               <FormControl
                 type="text"
                 name="user"
-                id=""
                 placeholder="enter your username..."
                 onChange={inputHandler}
               />
